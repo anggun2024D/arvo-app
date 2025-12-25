@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - Arvo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="about-header">
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="index.html" class="logo-link">
+                    <img src="images/logoo.svg" alt="ARVO" class="nav-logo">
+                </a>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="btn-outline" onclick="history.back()">
+                    <i class="fas fa-arrow-left"></i> Kembali 
+                </a>
+                <button id="themeToggle" class="btn-outline btn-small">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Content -->
+    <main class="about-container">
+        <div class="about-hero">
+            <h1>Hubungi Kami</h1>
+            <p class="hero-subtitle">Ada pertanyaan atau masukan? Silakan hubungi kami melalui form di bawah</p>
+        </div>
+
+        <div class="contact-content">
+            <!-- Form Contact -->
+            <section class="contact-section">
+                <div class="form-header">
+                    <h2><i class="fas fa-comments"></i> Form Kontak</h2>
+                    <p class="form-subtitle">Isi form berikut untuk mengirim pesan kepada tim Arvo</p>
+                </div>
+                
+                <form id="contactForm" class="contact-form">
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="fullName">Nama Lengkap <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Masukkan nama lengkap Anda" required>
+                        <div class="form-hint">Pastikan nama sesuai dengan identitas Anda</div>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="contoh: user@gmail.com" required>
+                        <div class="form-hint">Email ini akan digunakan untuk membalas pesan Anda</div>
+                    </div>
+                    
+                    <!-- Subject -->
+                    <div class="form-group">
+                        <label for="subject">Topik Pesan <span class="required">*</span></label>
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected>Pilih topik pesan Anda</option>
+                            <option value="saran-fitur">Saran fitur baru</option>
+                            <option value="bug-report">Komplain / bug report</option>
+                            <option value="kerja-sama">Kerja sama</option>
+                            <option value="aplikasi-error">Aplikasi error</option>
+                            <option value="saran-ui">Saran desain UI</option>
+                            <option value="lainnya">Lainnya</option>
+                        </select>
+                        <div class="form-hint">Pilih topik yang paling sesuai dengan pesan Anda</div>
+                    </div>
+                    
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label for="message">Isi Pesan <span class="required">*</span></label>
+                        <textarea id="message" name="message" rows="6" 
+                                  placeholder="Tulis pesan Anda di sini..." 
+                                  required></textarea>
+                        <div class="form-hint">Jelaskan secara detail pertanyaan atau masukan Anda</div>
+                    </div>
+                    
+                    <!-- Attachment -->
+                    <div class="form-group">
+                        <label for="attachment">Lampiran (Opsional)</label>
+                        <div class="file-input-wrapper">
+                            <input type="file" id="attachment" name="attachment" 
+                                   accept=".jpg,.jpeg,.png,.gif,.pdf,.txt">
+                            <label for="attachment" class="file-input-label">
+                                <i class="fas fa-paperclip"></i>
+                                <span>Pilih file</span>
+                            </label>
+                        </div>
+                        <div class="form-hint">Anda dapat melampirkan screenshot (jpg, png) atau dokumen (pdf, txt)</div>
+                    </div>
+                    
+                    <!-- Privacy Agreement -->
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="privacyAgreement" name="privacyAgreement" required>
+                            <span class="checkmark"></span>
+                            Saya setuju bahwa pesan ini akan diproses oleh tim Arvo sesuai dengan 
+                            <a href="privacy.html" target="_blank">kebijakan privasi</a>*
+                        </label>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary btn-submit" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span id="submitText">Kirim Pesan</span>
+                            <div class="loading-dots" id="loadingDots" style="display: none;">
+                                <span>•</span>
+                                <span>•</span>
+                                <span>•</span>
+                            </div>
+                        </button>
+                    </div>
+                    
+                    <div class="form-footer">
+                        <p class="form-note">
+                            <i class="fas fa-info-circle"></i>
+                            Pesan Anda akan diproses dalam 1-2 hari kerja. Untuk masalah mendesak, 
+                            harap tambahkan "[URGENT]" di awal pesan.
+                        </p>
+                    </div>
+                </form>
+            </section>
+            
+            <!-- Contact Info -->
+            <section class="info-section">
+                <h2><i class="fas fa-envelope"></i> Informasi Kontak</h2>
+                
+                <div class="contact-info-detail">
+                    <div class="contact-item-large">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>contact@arvoapp.com</p>
+                            <p class="text-muted">Biasanya membalas dalam 24 jam</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item-large">
+                        <div class="contact-icon">
+                            <i class="fas fa-university"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Institusi</h3>
+                            <p>Universitas Negeri Surabaya</p>
+                            <p class="text-muted">D4 Manajemen Informatika</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item-large">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Pengembang</h3>
+                            <p>Tim Pengembang Arvo</p>
+                            <p class="text-muted">Anggun Amaylia Abdillah</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FAQ Section -->
+                <div class="faq-section">
+                    <h3><i class="fas fa-question-circle"></i> Pertanyaan Umum</h3>
+                    <div class="faq-item">
+                        <h4>Kapan saya akan mendapat balasan?</h4>
+                        <p>Tim Arvo akan membalas pesan dalam 1-2 hari kerja. Pesan dengan prioritas tinggi akan diprioritaskan.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Bolehkah saya melampirkan file?</h4>
+                        <p>Ya, Anda dapat melampirkan file seperti screenshot atau dokumen dengan format jpg, png, pdf, atau txt.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Bagaimana cara melaporkan bug?</h4>
+                        <p>Pilih topik "Komplain / bug report" dan lampirkan screenshot jika memungkinkan untuk membantu kami memperbaiki masalah.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Kolom 1: Branding -->
+            <div class="footer-column branding-column">
+                <div class="footer-brand">
+                    <img src="images/logoo.svg" alt="Arvo Logo" class="footer-logo">
+                    <h3>Arvo – Activity & Goals Manager</h3>
+                </div>
+                <p class="footer-description">
+                    Arvo membantu mahasiswa mengatur jadwal, mencatat kegiatan, dan mencapai target harian maupun jangka panjang.
+                </p>
+            </div>
+
+            <!-- Kolom 2: Quick Links -->
+            <div class="footer-column links-column">
+                <h4 class="footer-heading">Navigasi Cepat</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link" data-page="dashboard">Home</a></li>
+                    <li><a href="about.html" class="footer-link">About</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 3: Contact & Social -->
+            <div class="footer-column contact-column">
+                <h4 class="footer-heading">Kontak</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@arvoapp.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Universitas Negeri Surabaya - D4 Manajemen Informatika</span>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom - Full Width -->
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 Arvo. All rights reserved.</p>
+            <p class="version">v1.0.0</p>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal hidden">
+        <div class="modal-content success-modal">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Pesan Berhasil Dikirim! 🎉</h3>
+            <p>Terima kasih telah menghubungi kami. Tim Arvo akan membalas pesan Anda dalam 1-2 hari kerja.</p>
+            <div class="modal-actions">
+                <button id="closeModal" class="btn-primary">Tutup</button>
+                <a href="index.html" class="btn-outline">Kembali ke Aplikasi</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        // Form submission handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const loadingDots = document.getElementById('loadingDots');
+            const successModal = document.getElementById('successModal');
+            const closeModal = document.getElementById('closeModal');
+            
+            // HANYA SATU event listener
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validasi
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value.trim();
+                const privacyAgreement = document.getElementById('privacyAgreement').checked;
+                
+                // Basic validation
+                if (!fullName || !email || !subject || !message || !privacyAgreement) {
+                    showNotification('Harap isi semua field yang wajib diisi!', 'error');
+                    return;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    showNotification('Format email tidak valid!', 'error');
+                    return;
+                }
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitText.style.display = 'none';
+                loadingDots.style.display = 'flex';
+                
+                // Kirim ke backend
+                const formData = new FormData(this);
+                
+                fetch("backend/send_message.php", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Hide loading state
+                    submitBtn.disabled = false;
+                    submitText.style.display = 'inline';
+                    loadingDots.style.display = 'none';
+                    
+                    if (data.status === "success") {
+                        // Reset form
+                        contactForm.reset();
+                        document.getElementById('subject').selectedIndex = 0;
+                        
+                        // Show success modal
+                        successModal.classList.remove('hidden');
+                        showNotification('Pesan berhasil dikirim!', 'success');
+                    } else {
+                        showNotification(data.message || 'Gagal mengirim pesan', 'error');
+                    }
+                })
+                .catch(error => {
+                    // Hide loading state
+                    submitBtn.disabled = false;
+                    submitText.style.display = 'inline';
+                    loadingDots.style.display = 'none';
+                    
+                    console.error('Error:', error);
+                    showNotification('Terjadi kesalahan saat mengirim pesan', 'error');
+                });
+            });
+            
+            // Modal close
+            closeModal.addEventListener('click', function() {
+                successModal.classList.add('hidden');
+            });
+            
+            // Close modal when clicking outside
+            successModal.addEventListener('click', function(e) {
+                if (e.target === successModal) {
+                    successModal.classList.add('hidden');
+                }
+            });
+            
+            // File input styling
+            const fileInput = document.getElementById('attachment');
+            const fileInputLabel = document.querySelector('.file-input-label span');
+            
+            if (fileInput) {
+                fileInput.addEventListener('change', function() {
+                    if (this.files && this.files[0]) {
+                        fileInputLabel.textContent = this.files[0].name;
+                    } else {
+                        fileInputLabel.textContent = 'Pilih file';
+                    }
+                });
+            }
+            
+            // Notification function
+            function showNotification(message, type) {
+                // Remove existing notifications
+                document.querySelectorAll('.notification').forEach(notification => notification.remove());
+                
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <span>${message}</span>
+                    <button onclick="this.parentElement.remove()">&times;</button>
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.remove();
+                    }
+                }, 5000);
+            }
+        });
+
+        // Theme toggle functionality for contact.html
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', toggleTheme);
+                loadTheme();
+            }
+        });
+
+        function loadTheme() {
+            const theme = localStorage.getItem('arvo-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            updateThemeButton(theme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('arvo-theme', newTheme);
+            updateThemeButton(newTheme);
+        }
+
+        function updateThemeButton(theme) {
+            const themeToggle = document.getElementById('themeToggle');
+            if (!themeToggle) return;
+            
+            const icon = themeToggle.querySelector('i');
+            const text = theme === 'light' ? 'Mode Gelap' : 'Mode Terang';
+            
+            icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            themeToggle.innerHTML = `<i class="${icon.className}"></i> ${text}`;
+        }
+    </script>
+</body>
+</html>

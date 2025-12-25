@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arvo - Your Journey to Growth</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome to Arvo</h2>
+                <p>Your journey to growth starts here</p>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Masukkan username Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Login</button>
+                <p class="auth-link">
+                    Don't have an account? 
+                    <a href="#" id="showRegister">Register here</a>
+                </p>
+            </form>
+            
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form hidden">
+                <div class="form-group">
+                    <label for="regUsername">Username</label>
+                    <input type="text" id="regUsername" name="regUsername" placeholder="Buat username Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" name="regEmail" placeholder="Masukkan email Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="regPassword" name="regPassword" placeholder="Buat password Anda" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="regConfirmPassword">Confirm Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="regConfirmPassword" name="regConfirmPassword" placeholder="Konfirmasi password Anda" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Register</button>
+                <p class="auth-link">
+                    Already have an account? 
+                    <a href="#" id="showLogin">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="mainContent">
+        <!-- Navbar Baru -->
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="#" class="logo-link">
+                    <img src="images/logoo.svg" alt="ARVO" class="nav-logo">
+                </a>
+                <div class="nav-hamburger" id="navHamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-page="dashboard"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
+                <li><a href="#" class="nav-link" data-page="schedule"><i class="fas fa-calendar-alt"></i><span>Jadwal</span></a></li>
+                <li><a href="#" class="nav-link" data-page="calendar"><i class="fas fa-calendar"></i><span>Kalender</span></a></li>
+                <li><a href="#" class="nav-link" data-page="notes"><i class="fas fa-sticky-note"></i><span>Notulensi</span></a></li>
+                <li><a href="#" class="nav-link" data-page="goals"><i class="fas fa-bullseye"></i><span>Target</span></a></li>
+            </ul>
+
+            <div class="nav-right">
+                <button id="themeToggle" class="btn-outline btn-small">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="nav-profile">
+                    <div class="avatar-small">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="drop-btn">
+                            <span id="navUsername">User</span> 
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#" data-page="profile"><i class="fas fa-user-cog"></i> Profil</a>
+                            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="container">
+            <!-- ===== DASHBOARD PAGE ===== -->
+            <div id="dashboard" class="page active">
+                <!-- Hero Section Baru -->
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1>Welcome to Your Growth Journey <span id="userName">User</span>!</h1>
+                            <p class="hero-subtitle">Every step you take brings you closer to your dreams. Let's make today count! 🌟</p>
+                            <div class="hero-actions">
+                                <button class="btn-hero" data-page="schedule">
+                                    <i class="fas fa-plus-circle"></i> Tambah Jadwal
+                                </button>
+                                <button class="btn-hero-outline" data-page="goals">
+                                    <i class="fas fa-flag"></i> Set Target
+                                </button>
+                            </div>
+                        </div>
+                        <div class="hero-illustration">
+                            <div id="mascotContainer" class="mascot-container">
+                                <div class="mascot-bubble">
+                                    <p id="mascotMessage">Semangat hari ini yaa! 🐻✨</p>
+                                </div>
+                                <div class="mascot-image">
+                                    <img src="images/maskot.svg" alt="Mascot Arvo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalSchedules">0</span>
+                        <span class="stat-label">Total Jadwal</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalNotes">0</span>
+                        <span class="stat-label">Notulensi</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="completedTasks">0</span>
+                        <span class="stat-label">Tugas Selesai</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="activeDays">0</span>
+                        <span class="stat-label">Hari Aktif</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="highPriorityTasks">0</span>
+                        <span class="stat-label">Prioritas Tinggi</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="goalsProgress">0%</span>
+                        <span class="stat-label">Progress Target</span>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Today's Activities -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <h3>Kegiatan Hari Ini</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="today-date" id="todayDate"></div>
+                            <div class="activities-list" id="todayActivities">
+                                <div class="no-activities">
+                                    <i class="fas fa-calendar-check"></i>
+                                    <p>Tidak ada kegiatan hari ini</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Overview -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Ringkasan Progress</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="overallProgress"></div>
+                                </div>
+                                <span class="progress-text" id="progressText">0% Progress Keseluruhan</span>
+                            </div>
+                            <div class="progress-details">
+                                <div class="progress-item">
+                                    <span>Jadwal Terselesaikan</span>
+                                    <span id="completedSchedules">0/0</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span>Notulensi Aktif</span>
+                                    <span id="activeNotes">0</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span>Hari Berjalan</span>
+                                    <span id="activeDaysCount">0</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span>Target Semester</span>
+                                    <span id="semesterProgress">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Analytics -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <h3>Analisis Kegiatan</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="analytics-container">
+                                <div class="analytics-item">
+                                    <span>Kuliah</span>
+                                    <div class="analytics-bar">
+                                        <div class="analytics-fill" id="kuliahFill" 
+                                            data-percent="0" 
+                                            data-category="kuliah"></div>
+                                    </div>
+                                    <span id="kuliahCount">0</span>
+                                </div>
+                                <div class="analytics-item">
+                                    <span>Organisasi</span>
+                                    <div class="analytics-bar">
+                                        <div class="analytics-fill" id="organisasiFill" 
+                                            data-percent="0"
+                                            data-category="organisasi"></div>
+                                    </div>
+                                    <span id="organisasiCount">0</span>
+                                </div>
+                                <div class="analytics-item">
+                                    <span>Tugas</span>
+                                    <div class="analytics-bar">
+                                        <div class="analytics-fill" id="tugasFill" 
+                                            data-percent="0"
+                                            data-category="tugas"></div>
+                                    </div>
+                                    <span id="tugasCount">0</span>
+                                </div>
+                                <div class="analytics-item">
+                                    <span>Pribadi</span>
+                                    <div class="analytics-bar">
+                                        <div class="analytics-fill" id="pribadiFill" 
+                                            data-percent="0"
+                                            data-category="pribadi"></div>
+                                    </div>
+                                    <span id="pribadiCount">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Motivation -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <h3>Motivasi Harian</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="quote-container">
+                                <p id="dailyQuote">"The only way to do great work is to love what you do."</p>
+                                <span class="quote-author">- Steve Jobs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mini Calendar -->
+                    <div class="card calendar-card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <h3>Kalender</h3>
+                            <a href="#" class="view-all" data-page="calendar">
+                                Lihat Semua <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <div class="mini-week-calendar">
+                                <div class="week-days" id="weekCalendar">
+                                    <!-- Week days will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Aksi Cepat</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="quick-actions">
+                                <button class="btn-primary btn-full" data-page="schedule">
+                                    <i class="fas fa-plus"></i> Tambah Jadwal
+                                </button>
+                                <button class="btn-outline btn-full" data-page="notes">
+                                    <i class="fas fa-edit"></i> Buat Notulensi
+                                </button>
+                                <button class="btn-outline btn-full" data-page="goals">
+                                    <i class="fas fa-bullseye"></i> Set Target
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== SCHEDULE PAGE ===== -->
+            <div id="schedule" class="page">
+                <div class="page-header">
+                    <h1><i class="fas fa-calendar-alt"></i> Kelola Jadwal</h1>
+                    <p>Atur dan kelola jadwal kegiatan harian Anda</p>
+                </div>
+
+                <div class="content-grid">
+                    <!-- Schedule Form -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                            <h3>Tambah Jadwal Baru</h3>
+                        </div>
+                        <div class="card-content">
+                            <form id="scheduleForm" class="form">
+                                <div class="form-group">
+                                    <label for="scheduleTitle">Judul Kegiatan</label>
+                                    <input type="text" id="scheduleTitle" name="scheduleTitle" placeholder="Masukkan judul kegiatan" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="scheduleDate">Tanggal</label>
+                                        <input type="date" id="scheduleDate" name="scheduleDate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="scheduleTime">Waktu</label>
+                                        <input type="time" id="scheduleTime" name="scheduleTime" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="scheduleType">Jenis Kegiatan</label>
+                                        <select id="scheduleType" name="scheduleType" required>
+                                            <option value="kuliah">Kuliah</option>
+                                            <option value="organisasi">Organisasi</option>
+                                            <option value="tugas">Tugas</option>
+                                            <option value="pribadi">Pribadi</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="schedulePriority">Prioritas</label>
+                                        <select id="schedulePriority" name="schedulePriority" required>
+                                            <option value="low">Rendah</option>
+                                            <option value="medium">Sedang</option>
+                                            <option value="high">Tinggi</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="scheduleDescription">Deskripsi</label>
+                                    <textarea id="scheduleDescription" name="scheduleDescription" rows="3" placeholder="Tambahkan deskripsi kegiatan (opsional)"></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary btn-full">
+                                    <i class="fas fa-save"></i> Simpan Jadwal
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Schedule List -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-list"></i>
+                            </div>
+                            <h3>Daftar Jadwal Saya</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="schedule-filters">
+                                <button class="filter-btn active" data-filter="all">Semua</button>
+                                <button class="filter-btn" data-filter="kuliah">Kuliah</button>
+                                <button class="filter-btn" data-filter="organisasi">Organisasi</button>
+                                <button class="filter-btn" data-filter="tugas">Tugas</button>
+                                <button class="filter-btn" data-filter="pribadi">Pribadi</button>
+                                <button class="filter-btn" data-filter="high">Prioritas Tinggi</button>
+                            </div>
+                            <div class="schedule-list" id="scheduleList">
+                                <!-- Schedules will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== CALENDAR PAGE ===== -->
+            <div id="calendar" class="page">
+                <div class="page-header">
+                    <h1><i class="fas fa-calendar"></i> Kalender Bulanan</h1>
+                    <p>Lihat jadwal Anda dalam tampilan kalender</p>
+                </div>
+
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prevMonth" class="btn-outline">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h2 id="currentMonth">Bulan Tahun</h2>
+                        <button id="nextMonth" class="btn-outline">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="calendar-weekdays">
+                        <div>Minggu</div>
+                        <div>Senin</div>
+                        <div>Selasa</div>
+                        <div>Rabu</div>
+                        <div>Kamis</div>
+                        <div>Jumat</div>
+                        <div>Sabtu</div>
+                    </div>
+                    
+                    <div class="calendar-days" id="calendarDays">
+                        <!-- Calendar days will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Event Details Modal -->
+                <div id="eventModal" class="modal event-modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 id="eventModalTitle">Detail Kegiatan</h2>
+                            <button id="closeEventModal" class="btn-close">&times;</button>
+                        </div>
+                        <div class="modal-body" id="eventModalBody">
+                            <!-- Event details will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== NOTES PAGE ===== -->
+            <div id="notes" class="page">
+                <div class="page-header">
+                    <h1><i class="fas fa-sticky-note"></i> Notulensi</h1>
+                    <p>Catat dan kelani informasi penting Anda</p>
+                </div>
+
+                <div class="content-grid">
+                    <!-- Notes Form -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <h3>Buat Notulensi Baru</h3>
+                        </div>
+                        <div class="card-content">
+                            <form id="notesForm" class="form">
+                                <div class="form-group">
+                                    <label for="noteTitle">Judul Notulensi</label>
+                                    <input type="text" id="noteTitle" name="noteTitle" placeholder="Masukkan judul notulensi" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="noteCategory">Kategori</label>
+                                    <select id="noteCategory" name="noteCategory" required>
+                                        <option value="kuliah">Kuliah</option>
+                                        <option value="organisasi">Organisasi</option>
+                                        <option value="pribadi">Pribadi</option>
+                                        <option value="lainnya">Lainnya</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="noteContent">Isi Notulensi</label>
+                                    <textarea id="noteContent" name="noteContent" rows="8" placeholder="Tulis isi notulensi Anda di sini..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary btn-full">
+                                    <i class="fas fa-save"></i> Simpan Notulensi
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Notes List -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-sticky-note"></i>
+                            </div>
+                            <h3>Notulensi Saya</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="search-container">
+                                <div class="search-box">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" id="noteSearch" placeholder="Cari notulensi...">
+                                </div>
+                                <div class="search-info">
+                                    <span id="noteCount">0 notulensi ditemukan</span>
+                                </div>
+                            </div>
+                            <div class="notes-history" id="notesList">
+                                <!-- Notes will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== GOALS PAGE ===== -->
+            <div id="goals" class="page">
+                <div class="page-header">
+                    <h1><i class="fas fa-bullseye"></i> Target & Karir</h1>
+                    <p>Rencanakan dan lacak tujuan Anda</p>
+                </div>
+
+                <div class="content-grid">
+                    <!-- Goals Form -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-flag"></i>
+                            </div>
+                            <h3>Set Target Baru</h3>
+                        </div>
+                        <div class="card-content">
+                            <form id="goalsForm" class="form">
+                                <div class="form-group">
+                                    <label for="goalType">Jenis Target</label>
+                                    <select id="goalType" name="goalType" required>
+                                        <option value="semester">Target Semester</option>
+                                        <option value="academic">Target Akademik</option>
+                                        <option value="career">Target Karir</option>
+                                        <option value="personal">Target Pribadi</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="goalTitle">Judul Target</label>
+                                    <input type="text" id="goalTitle" name="goalTitle" placeholder="Masukkan judul target" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="goalDescription">Deskripsi</label>
+                                    <textarea id="goalDescription" name="goalDescription" rows="3" placeholder="Jelaskan target Anda..." required></textarea>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="goalTargetValue">Target Nilai/IPK</label>
+                                        <input type="number" id="goalTargetValue" name="goalTargetValue" step="0.01" min="0" max="4.0" placeholder="Contoh: 3.5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="goalDeadline">Tenggat Waktu</label>
+                                        <input type="date" id="goalDeadline" name="goalDeadline">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="goalProgress">Progress Saat Ini (%)</label>
+                                    <input type="range" id="goalProgress" name="goalProgress" min="0" max="100" value="0">
+                                    <span id="progressValue">0%</span>
+                                </div>
+                                <button type="submit" class="btn-primary btn-full">
+                                    <i class="fas fa-save"></i> Simpan Target
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Goals List -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-list-check"></i>
+                            </div>
+                            <h3>Daftar Target Saya</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="goals-list" id="goalsList">
+                                <div class="no-activities">
+                                    <i class="fas fa-bullseye"></i>
+                                    <p>Belum ada target</p>
+                                    <p class="text-muted">Buat target pertama Anda!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== PROFILE PAGE ===== -->
+            <div id="profile" class="page">
+                <div class="page-header">
+                    <h1><i class="fas fa-user-circle"></i> Profil Pengguna</h1>
+                    <p>Kelola informasi profil dan pengaturan akun Anda</p>
+                </div>
+
+                <div class="content-grid">
+                    <!-- Profile Information -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-user-edit"></i>
+                            </div>
+                            <h3>Informasi Profil</h3>
+                        </div>
+                        <div class="card-content">
+                            <form id="profileForm" class="form">
+                                <div class="form-group">
+                                    <label for="profileName">Nama Lengkap</label>
+                                    <input type="text" id="profileName" name="profileName" placeholder="Masukkan nama lengkap" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profileEmail">Email</label>
+                                    <input type="email" id="profileEmail" name="profileEmail" placeholder="Masukkan email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="profileInstitution">Institusi</label>
+                                    <input type="text" id="profileInstitution" name="profileInstitution" placeholder="Nama institusi">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profileMajor">Jurusan</label>
+                                    <input type="text" id="profileMajor" name="profileMajor" placeholder="Jurusan pendidikan">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profileBio">Bio</label>
+                                    <textarea id="profileBio" name="profileBio" rows="3" placeholder="Ceritakan sedikit tentang diri Anda..."></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary btn-full">
+                                    <i class="fas fa-sync-alt"></i> Perbarui Profil
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Account Settings -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <h3>Pengaturan Akun</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="settings-list">
+                                <div class="setting-item">
+                                    <h4><i class="fas fa-key"></i> Ubah Password</h4>
+                                    <form id="passwordForm" class="form">
+                                        <div class="form-group">
+                                            <label for="currentPassword">Password Saat Ini</label>
+                                            <div class="password-input-wrapper">
+                                                <input type="password" id="currentPassword" name="currentPassword" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="newPassword">Password Baru</label>
+                                            <div class="password-input-wrapper">
+                                                <input type="password" id="newPassword" name="newPassword" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="confirmPassword">Konfirmasi Password Baru</label>
+                                            <div class="password-input-wrapper">
+                                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn-primary btn-full">
+                                            <i class="fas fa-lock"></i> Ubah Password
+                                        </button>
+                                    </form>
+                                </div>
+                                
+                                <div class="setting-item">
+                                    <h4><i class="fas fa-shield-alt"></i> Privasi & Data</h4>
+                                    <div class="privacy-options">
+                                        <button class="btn-outline btn-full" id="exportData">
+                                            <i class="fas fa-download"></i> Ekspor Data
+                                        </button>
+                                        <button class="btn-outline btn-full" id="deleteAccount">
+                                            <i class="fas fa-trash"></i> Hapus Akun
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Schedule Modal -->
+    <div id="editScheduleModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Jadwal</h2>
+                <button id="closeEditScheduleModal" class="btn-close">&times;</button>
+            </div>
+            <form id="editScheduleForm" class="form">
+                <input type="hidden" id="editScheduleId" name="id">
+                <div class="form-group">
+                    <label for="editScheduleTitle">Judul Kegiatan</label>
+                    <input type="text" id="editScheduleTitle" name="title" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editScheduleDate">Tanggal</label>
+                        <input type="date" id="editScheduleDate" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editScheduleTime">Waktu</label>
+                        <input type="time" id="editScheduleTime" name="time" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editScheduleType">Jenis Kegiatan</label>
+                        <select id="editScheduleType" name="type" required>
+                            <option value="kuliah">Kuliah</option>
+                            <option value="organisasi">Organisasi</option>
+                            <option value="tugas">Tugas</option>
+                            <option value="pribadi">Pribadi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editSchedulePriority">Prioritas</label>
+                        <select id="editSchedulePriority" name="priority" required>
+                            <option value="low">Rendah</option>
+                            <option value="medium">Sedang</option>
+                            <option value="high">Tinggi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editScheduleDescription">Deskripsi</label>
+                    <textarea id="editScheduleDescription" name="description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="editScheduleCompleted"> Tandai sebagai selesai
+                    </label>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Note Modal -->
+    <div id="editNoteModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Notulensi</h2>
+                <button id="closeEditNoteModal" class="btn-close">&times;</button>
+            </div>
+            <form id="editNoteForm" class="form">
+                <input type="hidden" id="editNoteId" name="id">
+                <div class="form-group">
+                    <label for="editNoteTitle">Judul Notulensi</label>
+                    <input type="text" id="editNoteTitle" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="editNoteCategory">Kategori</label>
+                    <select id="editNoteCategory" name="category" required>
+                        <option value="kuliah">Kuliah</option>
+                        <option value="organisasi">Organisasi</option>
+                        <option value="pribadi">Pribadi</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editNoteContent">Isi Notulensi</label>
+                    <textarea id="editNoteContent" name="content" rows="8" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Goal Modal -->
+    <div id="editGoalModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Target</h2>
+                <button id="closeEditGoalModal" class="btn-close">&times;</button>
+            </div>
+            <form id="editGoalForm" class="form">
+                <input type="hidden" id="editGoalId" name="id">
+                
+                <!-- TAMBAHKAN field type -->
+                <div class="form-group">
+                    <label for="editGoalType">Jenis Target</label>
+                    <select id="editGoalType" name="type" required>
+                        <option value="semester">Target Semester</option>
+                        <option value="academic">Target Akademik</option>
+                        <option value="career">Target Karir</option>
+                        <option value="personal">Target Pribadi</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editGoalTitle">Judul Target</label>
+                    <input type="text" id="editGoalTitle" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="editGoalDescription">Deskripsi</label>
+                    <textarea id="editGoalDescription" name="description" rows="3" required></textarea>
+                </div>
+                
+                <!-- TAMBAHKAN field deadline -->
+                <div class="form-group">
+                    <label for="editGoalDeadline">Tenggat Waktu</label>
+                    <input type="date" id="editGoalDeadline" name="deadline">
+                </div>
+                
+                <div class="form-group">
+                    <label for="editGoalProgress">Progress (%)</label>
+                    <input type="range" id="editGoalProgress" name="progress" min="0" max="100">
+                    <span id="editProgressValue">0%</span>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Simpan Perubahan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Kolom 1: Branding -->
+            <div class="footer-column branding-column">
+                <div class="footer-brand">
+                    <img src="images/logoo.svg" alt="Arvo Logo" class="footer-logo">
+                    <h3>Arvo – Activity & Goals Manager</h3>
+                </div>
+                <p class="footer-description">
+                    Arvo membantu mahasiswa mengatur jadwal, mencatat kegiatan, dan mencapai target harian maupun jangka panjang.
+                </p>
+            </div>
+
+            <!-- Kolom 2: Quick Links -->
+            <div class="footer-column links-column">
+                <h4 class="footer-heading">Navigasi Cepat</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link" data-page="dashboard">Home</a></li>
+                    <li><a href="about.html" class="footer-link">About</a></li>
+                    <li><a href="contact.html" class="footer-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 3: Contact & Social -->
+            <div class="footer-column contact-column">
+                <h4 class="footer-heading">Kontak</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@arvoapp.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Universitas Negeri Surabaya - D4 Manajemen Informatika</span>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom - Full Width -->
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 Arvo. All rights reserved.</p>
+            <p class="version">v1.0.0</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="animation-simple.js"></script>
+</body>
+</html>
